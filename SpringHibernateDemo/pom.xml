@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.student</groupId>
+  <artifactId>SpringHibernateDemo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  
+  <dependencies>
+  
+		<!-- Hibernate core -->
+  		<dependency>
+		    <groupId>org.hibernate.orm</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>7.4.6.Final</version>
+		    <scope>compile</scope>
+		</dependency>
+	
+		<!-- spring-context -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>7.0.9</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- spring-orm -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <version>7.0.9</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- mysql-connector-j -->
+		<dependency>
+		    <groupId>com.mysql</groupId>
+		    <artifactId>mysql-connector-j</artifactId>
+		    <version>26.7.0</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		
+		<!-- Spring JDBC (Since we are using DriverManagerDatasource of Spring for configuration)-->
+		<!-- We can also use hibernate.cfg.xml but in that we have to manage to configuration file-->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>7.0.9</version>
+		</dependency>
+  
+  </dependencies>
+</project>

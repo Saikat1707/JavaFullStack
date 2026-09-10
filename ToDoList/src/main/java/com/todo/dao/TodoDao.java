@@ -43,11 +43,10 @@ public class TodoDao {
 				.openSession();
 		
 		
-		Query<Todo> query = session.createQuery(
+		List<Todo> todos = session.createQuery(
 				"FROM Todo",Todo.class
-		);
+		).getResultList();
 		
-		List<Todo> todos = query.getResultList();
 		
 		session.close();
 		

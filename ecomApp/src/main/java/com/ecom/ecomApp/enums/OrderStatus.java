@@ -1,4 +1,4 @@
-package com.ecom.ecomApp.Enums;
+package com.ecom.ecomApp.enums;
 
 public enum OrderStatus {
     CONFIRMED,

@@ -1,7 +1,7 @@
 package com.ecom.ecomApp.model;
 
-import com.ecom.ecomApp.Enums.OrderStatus;
-import com.ecom.ecomApp.Enums.PayMethod;
+import com.ecom.ecomApp.enums.OrderStatus;
+import com.ecom.ecomApp.enums.PayMethod;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

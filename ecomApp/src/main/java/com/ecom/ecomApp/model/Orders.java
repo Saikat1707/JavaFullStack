@@ -35,10 +35,10 @@ public class Orders {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus = OrderStatus.CONFIRMED;
 
-    @OneToMany(
-            mappedBy = "orderLot",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customers customer;
+
+    @OneToMany(mappedBy = "orderLot")
     private List<OrderItems> orderItems = new ArrayList<>();
 }

@@ -30,6 +30,6 @@ public class Admin {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "listedBy")
+    @OneToMany(mappedBy = "listedBy")
     private List<Products> productsList = new ArrayList<>();
 }

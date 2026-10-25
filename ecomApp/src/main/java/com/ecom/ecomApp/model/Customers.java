@@ -1,6 +1,7 @@
 package com.ecom.ecomApp.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
@@ -8,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,6 +30,8 @@ public class Customers {
     private String fullName;
 
     @NotNull(message = "Email is required")
+    @Email(message = "Enter a valid email address")
+    @Column(unique = true, nullable = false)
     private String email;
 
     @NotNull(message = "Password is required")
@@ -44,7 +48,6 @@ public class Customers {
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
     private List<Orders> ordersList = new ArrayList<>();
 }

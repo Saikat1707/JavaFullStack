@@ -16,13 +16,13 @@ public class PublicServiceImpl implements PublicService {
     }
     @Override
     public List<Products> viewAllProduct() {
-        List<Products> productsList = productRepo.findAll();
-        return productsList;
+        return productRepo.findAll();
     }
 
     @Override
     public Products viewProductById(Long id) {
-        Products product = productRepo.findById(id).get();
-        return product;
+        return productRepo.findById(id).orElseThrow(
+                ()->new RuntimeException("product not found")
+        );
     }
 }

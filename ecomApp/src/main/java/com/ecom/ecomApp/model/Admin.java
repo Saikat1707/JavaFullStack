@@ -1,6 +1,7 @@
 package com.ecom.ecomApp.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,11 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullName;
+
+    @Column(unique = true)
+    @Email(message = "Email is not valid")
     private String email;
+
     private String password;
     private String organisationName;
     private LocalDateTime createdAt;

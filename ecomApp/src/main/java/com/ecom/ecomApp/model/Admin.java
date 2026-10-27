@@ -2,11 +2,14 @@ package com.ecom.ecomApp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +26,20 @@ public class Admin {
     private Long id;
     private String fullName;
 
-    @Column(unique = true)
-    @Email(message = "Email is not valid")
+    @NotNull(message = "Email is required")
+    @Email(message = "Enter a valid email address")
+    @Column(unique = true, nullable = false)
     private String email;
 
     private String password;
+
+    @NotNull(message = "Organisation name is required")
     private String organisationName;
-    private LocalDateTime createdAt;
+
+    @Past(message = "Date of birth must be in the past")
+    private LocalDate dob;
+
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @OneToOne
     @JoinColumn(name = "address_id")

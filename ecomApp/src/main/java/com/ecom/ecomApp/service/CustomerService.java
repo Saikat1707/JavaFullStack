@@ -6,7 +6,7 @@ import com.ecom.ecomApp.model.Customers;
 public interface CustomerService {
     Customers createCustomer(Customers customer);
     Customers loginCustomer(String email, String password);
-    Customers updateCustomer(Customers customer);
+    Customers updateCustomer(Long customerId,Customers customer);
     Customers getCustomerById(Long customerId);
 
     Address createAddress(Long customerId,Address address);

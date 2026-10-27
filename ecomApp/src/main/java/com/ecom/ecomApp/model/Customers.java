@@ -12,6 +12,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,8 @@ public class Customers {
 
     @Past(message = "Date of birth must be in the past")
     private LocalDate dob;
+
+    private LocalDateTime createdAt =  LocalDateTime.now();
 
     @OneToOne
     @JoinColumn(name = "address_id")

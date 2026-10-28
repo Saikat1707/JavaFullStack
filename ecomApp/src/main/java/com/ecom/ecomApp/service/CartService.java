@@ -12,4 +12,6 @@ public interface CartService {
     void removeProductFromCart(Long customerId, Long cartItemId);
 
     void clearCart(Long customerId);
+
+    boolean isProductInCart(Long customerId, Long productId);
 }

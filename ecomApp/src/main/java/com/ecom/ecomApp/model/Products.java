@@ -27,6 +27,7 @@ public class Products {
     private String description;
     private Double price;
     private String category;
+    private Long totalStock;
 
     @CreationTimestamp
     @Column(updatable = false)

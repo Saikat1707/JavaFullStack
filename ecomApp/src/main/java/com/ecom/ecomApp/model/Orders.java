@@ -22,7 +22,7 @@ public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime orderDateAndTime;
+    private LocalDateTime orderDateAndTime = LocalDateTime.now();
     private LocalDateTime updateDateAndTime;
     private LocalDateTime deliveryDateAndTime;
     private Double totalPrice;

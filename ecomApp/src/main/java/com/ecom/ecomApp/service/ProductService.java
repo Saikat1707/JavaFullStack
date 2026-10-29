@@ -16,4 +16,6 @@ public interface ProductService {
     void deleteProduct(Long adminId, Long productId);
 
     List<Products> getAllProductsByAdmin(Long adminId);
+
+    boolean isProductAvailable(Long productId);
 }

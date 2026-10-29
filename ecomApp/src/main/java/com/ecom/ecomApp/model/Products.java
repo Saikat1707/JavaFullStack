@@ -31,12 +31,12 @@ public class Products {
 
     @CreationTimestamp
     @Column(updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    private String imageUrl;
+//    private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name = "admin_id")

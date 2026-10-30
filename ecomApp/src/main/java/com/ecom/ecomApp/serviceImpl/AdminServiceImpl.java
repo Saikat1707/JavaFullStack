@@ -1,5 +1,6 @@
 package com.ecom.ecomApp.serviceImpl;
 
+import com.ecom.ecomApp.dto.CustomerUpdateRequestDto;
 import com.ecom.ecomApp.model.Address;
 import com.ecom.ecomApp.model.Admin;
 import com.ecom.ecomApp.repo.AddressRepo;
@@ -51,8 +52,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Admin updateAdmin(Long adminId,Admin admin) {
-        Admin existed = adminRepo.findById(admin.getId())
+    public Admin updateAdmin(Long adminId, CustomerUpdateRequestDto admin) {
+        Admin existed = adminRepo.findById(adminId)
                 .orElseThrow(
                         () -> new RuntimeException("Admin not found")
                 );
@@ -86,19 +87,27 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     @Transactional
-    public Address createAddress(Long adminId, Address address) {
+    public Address createAddress(Long adminId, CustomerUpdateRequestDto address) {
         if(address == null){
             throw new IllegalArgumentException("Address is required");
         }
         Admin admin = getAdminById(adminId);
-        admin.setAddress(address);
+
+        Address newAddress = new Address();
+        newAddress.setCity(address.getCity());
+        newAddress.setCountry(address.getCountry());
+        newAddress.setState(address.getState());
+        newAddress.setContactNumber(address.getContactNumber());
+        newAddress.setPostalCode(address.getPostalCode());
+
+        admin.setAddress(newAddress);
         adminRepo.save(admin);
 
-        return addressRepo.save(address);
+        return addressRepo.save(newAddress);
     }
 
     @Override
-    public Address updateAddress(Long adminId, Address address) {
+    public Address updateAddress(Long adminId, CustomerUpdateRequestDto address) {
         if (address == null) {
             throw new IllegalArgumentException("Address cannot be null");
         }

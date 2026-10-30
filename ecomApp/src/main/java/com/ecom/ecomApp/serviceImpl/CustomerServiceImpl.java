@@ -1,5 +1,6 @@
 package com.ecom.ecomApp.serviceImpl;
 
+import com.ecom.ecomApp.dto.CustomerUpdateRequestDto;
 import com.ecom.ecomApp.model.Address;
 import com.ecom.ecomApp.model.Customers;
 import com.ecom.ecomApp.repo.AddressRepo;
@@ -53,7 +54,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customers updateCustomer(Long customerId,Customers customer) {
+    public Customers updateCustomer(Long customerId, CustomerUpdateRequestDto customer) {
         Customers existed = customerRepo.findById(customerId)
                 .orElseThrow(
                         () -> new RuntimeException("Customer not found")
@@ -90,19 +91,27 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public Address createAddress(Long customerId, Address address) {
+    public Address createAddress(Long customerId, CustomerUpdateRequestDto address) {
         if(address == null){
             throw new IllegalArgumentException("Address is required");
         }
         Customers customer = getCustomerById(customerId);
-        customer.setAddress(address);
+
+        Address newAddress = new Address();
+        newAddress.setCity(address.getCity());
+        newAddress.setCountry(address.getCountry());
+        newAddress.setState(address.getState());
+        newAddress.setContactNumber(address.getContactNumber());
+        newAddress.setPostalCode(address.getPostalCode());
+
+        customer.setAddress(newAddress);
         customerRepo.save(customer);
 
-        return addressRepo.save(address);
+        return addressRepo.save(newAddress);
     }
 
     @Override
-    public Address updateAddress(Long customerId, Address address) {
+    public Address updateAddress(Long customerId, CustomerUpdateRequestDto address) {
 
         if (address == null) {
             throw new IllegalArgumentException("Address cannot be null");

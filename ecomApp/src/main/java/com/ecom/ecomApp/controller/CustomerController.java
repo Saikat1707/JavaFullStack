@@ -1,6 +1,8 @@
 package com.ecom.ecomApp.controller;
 
+import com.ecom.ecomApp.dto.CustomerUpdateRequestDto;
 import com.ecom.ecomApp.dto.LoginReqDto;
+import com.ecom.ecomApp.model.Address;
 import com.ecom.ecomApp.model.Customers;
 import com.ecom.ecomApp.service.CustomerService;
 import jakarta.validation.Valid;
@@ -41,5 +43,30 @@ public class CustomerController {
                 );
     }
 
-//    @PutMapping("/update")
+    @PutMapping("/update/{customerId}")
+    public ResponseEntity<Customers> updateCustomer(
+            @RequestBody CustomerUpdateRequestDto dto,
+            @PathVariable Long customerId
+            ){
+        return ResponseEntity.ok().body(customerService.updateCustomer(customerId, dto));
+    }
+
+    @PostMapping("/create/address/{customerId}")
+    public ResponseEntity<Address> createAddress(
+            @PathVariable Long customerId,
+            @RequestBody CustomerUpdateRequestDto address
+    ){
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                customerService.createAddress(customerId,address)
+        );
+    }
+
+    @PutMapping("/update/address/{customerId}")
+    public ResponseEntity<Address> updateAddress(
+            @PathVariable Long customerId,
+            @RequestBody CustomerUpdateRequestDto address
+    ){
+        return ResponseEntity.ok().body(customerService.updateAddress(customerId, address));
+    }
+
 }

@@ -11,6 +11,7 @@ public class CustomerUpdateRequestDto {
     private String fullName;
     private String email;
     private LocalDate dob;
+    private String organisationName;
 
     private String Country;
     private String State;

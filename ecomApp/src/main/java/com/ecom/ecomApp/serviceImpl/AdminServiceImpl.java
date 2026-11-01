@@ -73,6 +73,12 @@ public class AdminServiceImpl implements AdminService {
             existed.setDob(admin.getDob());
         }
 
+        if (admin.getOrganisationName() != null
+                && !Objects.equals(
+                admin.getOrganisationName(), existed.getOrganisationName())) {
+            existed.setOrganisationName(admin.getOrganisationName());
+        }
+
         adminRepo.save(existed);
 
         return existed;

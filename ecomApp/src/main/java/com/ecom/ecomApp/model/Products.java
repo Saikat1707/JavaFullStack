@@ -1,5 +1,6 @@
 package com.ecom.ecomApp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -40,6 +41,7 @@ public class Products {
 
     @ManyToOne
     @JoinColumn(name = "admin_id")
+    @JsonBackReference
     private Admin listedBy;
 
     @OneToMany(mappedBy = "product")

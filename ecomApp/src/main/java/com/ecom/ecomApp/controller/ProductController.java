@@ -20,7 +20,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping
+    @GetMapping("/get/all")
     public ResponseEntity<List<Products>> getAllProducts() {
         return ResponseEntity.ok(
                 productService.getAllProducts()
@@ -57,13 +57,11 @@ public class ProductController {
     }
 
     @DeleteMapping("/delete/{adminId}/{productId}")
-    public ResponseEntity<Void> deleteProduct(
+    public void deleteProduct(
             @PathVariable Long adminId,
             @PathVariable Long productId) {
 
         productService.deleteProduct(adminId, productId);
-
-        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/admin/{adminId}")

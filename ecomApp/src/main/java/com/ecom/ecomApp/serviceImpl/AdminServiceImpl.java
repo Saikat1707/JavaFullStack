@@ -102,6 +102,7 @@ public class AdminServiceImpl implements AdminService {
         Address newAddress = new Address();
         newAddress.setCity(address.getCity());
         newAddress.setCountry(address.getCountry());
+        newAddress.setDistrict(address.getDistrict());
         newAddress.setState(address.getState());
         newAddress.setContactNumber(address.getContactNumber());
         newAddress.setPostalCode(address.getPostalCode());

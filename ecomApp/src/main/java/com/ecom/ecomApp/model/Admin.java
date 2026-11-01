@@ -1,5 +1,6 @@
 package com.ecom.ecomApp.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -49,5 +50,6 @@ public class Admin {
     private Address address;
 
     @OneToMany(mappedBy = "listedBy")
+    @JsonManagedReference
     private List<Products> productsList = new ArrayList<>();
 }

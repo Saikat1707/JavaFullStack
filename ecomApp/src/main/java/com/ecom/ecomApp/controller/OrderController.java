@@ -34,16 +34,16 @@ public class OrderController {
             @PathVariable Long customerId
     ){
         return ResponseEntity.ok()
-                .body(orderService.getOrderById(orderId, customerId));
+                .body(orderService.getOrderById(customerId, orderId));
     }
 
-    @GetMapping("/get/{orderId}/{customerId}")
+    @GetMapping("/status/{orderId}/{customerId}")
     public ResponseEntity<OrderStatus> getOrderStatus(
             @PathVariable Long orderId,
             @PathVariable Long customerId
     ){
         return ResponseEntity.ok()
-                .body(orderService.getOrderStatus(orderId, customerId));
+                .body(orderService.getOrderStatus(customerId, orderId));
     }
 
     @PostMapping("/place/{customerId}/{payMethod}")

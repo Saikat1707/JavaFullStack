@@ -45,7 +45,7 @@ public class ProductController {
                 .body(productService.createProduct(adminId, product));
     }
 
-    @PutMapping("/update/{adminId}/{productId}")
+    @PatchMapping("/update/{adminId}/{productId}")
     public ResponseEntity<Products> updateProduct(
             @PathVariable Long adminId,
             @PathVariable Long productId,
